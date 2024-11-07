@@ -1,6 +1,6 @@
 # Desafio 2: Modelagem de Banco de Dados para Oficina Mecânica
 
-Este projeto faz parte do bootcamp **[Nome do Bootcamp]** promovido pela [DIO](https://www.dio.me/) em parceria com a Suzano. O objetivo deste desafio é criar um esquema conceitual de banco de dados para uma oficina mecânica, com base na narrativa fornecida. O esquema foi modelado usando o MySQL Workbench e o diagrama foi gerado com o auxílio da ferramenta dbdiagram.io.
+Este projeto faz parte do bootcamp **Suzano - Análise de Dados com Power BI** promovido pela [DIO](https://www.dio.me/) em parceria com a [Suzano](https://www.suzano.com.br/). O objetivo deste desafio é criar um esquema conceitual de banco de dados para uma oficina mecânica, com base na narrativa fornecida. O esquema foi modelado usando o MySQL Workbench e o diagrama foi gerado com o auxílio da ferramenta [dbdiagram.io](https://dbdiagram.io/home).
 
 ## Descrição do Projeto
 
@@ -20,5 +20,80 @@ O sistema visa controlar e gerenciar as ordens de serviço (OS) em uma oficina m
 
 ## Diagrama do Esquema Conceitual
 
-![Diagrama do Banco de Dados](./diagrama_oficina.png)
+![image](https://github.com/user-attachments/assets/0ea43676-d088-42a6-bd91-2f330ab23a1d)
+
+
 ## Entidades e Atributos 
+
+
+**Cliente:**
+* CPF (PK)
+* Nome
+* Telefone
+* Endereço
+
+**Veículo:**
+* Placa (PK)
+* Modelo
+* Ano
+* Cliente_CPF (FK)
+
+**Equipe:**
+* ID_Equipe (PK)
+* Descrição
+
+**Mecânico:**
+* Código (PK)
+* Nome
+* Endereço
+* Especialidade
+
+**Mecanicos_Equipe:**
+* Codigo_Mecanico (FK)
+* ID_Equipe (FK)
+
+**TipoServico:**
+* ID_TipoServico (PK)
+* Descrição
+
+**Serviço:**
+* ID_Servico (PK)
+* Descrição
+* Valor_Mao_de_obra
+* ID_TipoServico (FK)
+
+**Peça:**
+* ID_Peca (PK)
+* Descrição
+* Valor
+
+**Fornecedor:**
+* ID_Fornecedor (PK)
+* Nome
+* CNPJ
+* Telefone
+* Endereço
+
+**Pecas_Fornecedor:**
+* ID_Peca (FK)
+* ID_Fornecedor (FK)
+
+**OrdemServico (OS):**
+* Numero_OS (PK)
+* Data_Emissao
+* Data_Conclusao
+* Status
+* Valor_Total
+* Veiculo_Placa (FK)
+* Equipe_ID_Equipe (FK)
+
+
+**Servicos_OS:**
+* Numero_OS (FK)
+* ID_Servico (FK)
+* Quantidade
+
+**Pecas_OS:**
+* Numero_OS (FK)
+* ID_Peca (FK)
+* Quantidade
